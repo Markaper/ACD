@@ -1,0 +1,4 @@
+﻿  ACD12.cpp
+C:\Users\ASUS\Desktop\ACD\ACD12\ACD12\ACD12.cpp(24,28): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\ASUS\Desktop\ACD\ACD12\ACD12\ACD12.cpp(65,20): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  ACD12.vcxproj -> C:\Users\ASUS\Desktop\ACD\ACD12\x64\Debug\ACD12.exe

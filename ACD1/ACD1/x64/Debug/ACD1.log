@@ -1,0 +1,3 @@
+﻿  ACD11.cpp
+C:\Users\ASUS\Desktop\ACD\ACD1\ACD1\ACD11.cpp(27,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  ACD1.vcxproj -> C:\Users\ASUS\Desktop\ACD\ACD1\x64\Debug\ACD1.exe
