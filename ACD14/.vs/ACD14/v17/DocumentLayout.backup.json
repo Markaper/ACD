@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ASUS\\Desktop\\ACD\\ACD14\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{CC0E45E1-DB3A-4A0E-8CB0-D0833D9917F6}|ACD14\\ACD14.vcxproj|C:\\Users\\ASUS\\Desktop\\ACD\\ACD14\\ACD14\\ACD14.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CC0E45E1-DB3A-4A0E-8CB0-D0833D9917F6}|ACD14\\ACD14.vcxproj|solutionrelative:ACD14\\ACD14.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ACD14.cpp",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\ACD\\ACD14\\ACD14\\ACD14.cpp",
+              "RelativeDocumentMoniker": "ACD14\\ACD14.cpp",
+              "ToolTip": "C:\\Users\\ASUS\\Desktop\\ACD\\ACD14\\ACD14\\ACD14.cpp",
+              "RelativeToolTip": "ACD14\\ACD14.cpp",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABwAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-11-28T08:49:21.911Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,48 +1,88 @@
 ﻿#include <iostream>
 #include <fstream>
 #include <string>
-#include <unordered_map>
 #include <vector>
+#include <sstream>
+#include <algorithm>
+#include <set>
 
-std::string simpleHash(const std::string& str) {
-    std::hash<std::string> hashFn;
-    return std::to_string(hashFn(str));
-}
+const size_t TABLE_SIZE = 30;
 
-void createHashTable(const std::string& inputFile, std::unordered_map<std::string, std::vector<std::string>>& hashTable) {
-    std::ifstream file(inputFile);
-    std::string line;
-
-    while (std::getline(file, line)) {
-        if (!line.empty()) {
-            std::string hashed = simpleHash(line);
-            hashTable[hashed].push_back(line);
-        }
+unsigned int hashFunction(const std::string& str) {
+    unsigned int hash = 0;
+    for (char ch : str) {
+        hash = (hash * 31 + ch) % TABLE_SIZE;
     }
+    return hash;
 }
 
-void writeHashTableToFile(const std::unordered_map<std::string, std::vector<std::string>>& hashTable, const std::string& outputFile) {
-    std::ofstream file(outputFile);
-    for (const auto& pair : hashTable) {
-        file << pair.first << ": ";
-        for (const auto& value : pair.second) {
-            file << value << ", ";
-        }
-        file << "\n";
-    }
-}
+struct HashEntry {
+    std::string key; // Слово
+    std::string value; // Значение для слова с номером
+};
 
 int main() {
-    setlocale(LC_ALL, "Russian");
+    setlocale(LC_ALL, "");
+    std::string inputFileName, outputFileName;
 
-    std::string inputFilename = "input.txt";  
-    std::string outputFilename = "output.txt";  
+    std::cout << "Введите имя входного файла: ";
+    std::cin >> inputFileName;
+    std::cout << "Введите имя выходного файла: ";
+    std::cin >> outputFileName;
 
-    std::unordered_map<std::string, std::vector<std::string>> hashTable;
-    createHashTable(inputFilename, hashTable);
-    writeHashTableToFile(hashTable, outputFilename);
+    std::ifstream inputFile(inputFileName);
+    std::ofstream outputFile(outputFileName);
 
-    std::cout << "Хеш-таблица успешно создана и записана в файл " << outputFilename << std::endl;
+    if (!inputFile.is_open() || !outputFile.is_open()) {
+        std::cerr << "Ошибка открытия файла!" << std::endl;
+        return 1;
+    }
+
+    std::vector<HashEntry> hashTable(TABLE_SIZE);
+    std::set<std::string> addedWords; // множество для отслеживания добавленных слов
+    int counter = 1; // Начинаем с 1
+
+    std::string word;
+
+    while (inputFile >> word) {
+        std::transform(word.begin(), word.end(), word.begin(), ::tolower);
+
+        // Проверяем, есть ли слово уже в множестве
+        if (addedWords.count(word)) continue;
+
+
+        unsigned int index = hashFunction(word);
+        bool inserted = false;
+
+        for (size_t i = 0; i < TABLE_SIZE; ++i) {
+            size_t newIndex = (index + i) % TABLE_SIZE;
+            if (hashTable[newIndex].key.empty()) {
+                hashTable[newIndex].key = word;
+                hashTable[newIndex].value = std::to_string(counter) + "-" + word;
+                counter++;
+                inserted = true;
+                addedWords.insert(word); // Добавляем слово в множество после успешной вставки
+                break;
+            }
+            //Если ячейка занята другим словом, то мы пропускаем её.
+        }
+
+        if (!inserted) {
+            std::cerr << "Не удалось вставить слово: " << word << ", таблица переполнена!" << std::endl;
+        }
+    }
+
+    inputFile.close();
+
+    outputFile << "Хеш-таблица (размер: " << TABLE_SIZE << "):" << std::endl;
+    for (size_t i = 0; i < TABLE_SIZE; ++i) {
+        if (!hashTable[i].key.empty()) {
+            outputFile << i << ": " << hashTable[i].key << std::endl;
+        }
+    }
+
+    outputFile.close();
+    std::cout << "Хеш-таблица успешно записана в файл " << outputFileName << std::endl;
 
     return 0;
 }

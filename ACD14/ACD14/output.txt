@@ -1,0 +1,8 @@
+0: is is is 
+2: sample repeated are repeated 
+3: text contains 
+4: word Some 
+6: file some 
+7: a a 
+8: This This This 
+9: It words words 

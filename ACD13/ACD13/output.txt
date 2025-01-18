@@ -1,0 +1,14 @@
+Хеш-таблица (размер: 30):
+2: repeated
+3: text
+7: a
+10: is
+11: it
+12: sample
+13: are
+16: some
+19: words
+20: this
+23: contains
+24: word
+26: file

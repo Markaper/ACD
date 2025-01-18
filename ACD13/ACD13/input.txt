@@ -1,4 +1,4 @@
-Привет, мир!
-Это тест.
-Привет, мир!
-Ещё одна строка.
+This is a sample text file
+It contains some words
+This is a repeated word
+Some words are repeated This is
